@@ -1,4 +1,6 @@
-
-.baby{
-    color: pink;
+.bg-proc-primary{
+    background-color: #563d7c;
+}
+.proc-sidebar{
+    width: 17%;
 }
