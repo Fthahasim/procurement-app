@@ -16,15 +16,16 @@ class ItemsController extends Controller{
         $this->SupplierService = $SupplierService;
     }
     public function index(){
+        // dd(10);
         $suppliers = $this->SupplierService->getActiveSuppliers();
         return view('items', ['suppliers' => $suppliers]);
     }
-    public function addSupplier(Request $request){
+    public function addItems(Request $request){
         try {
-            dd(10);
-            // $res = $this->service->addSuppliers($request);
-            // return response()->json($res);
+            $res = $this->service->addItems($request);
+            return response()->json($res);
         } catch (\Throwable $th) {  
+            dd($th);
             return ['msg'=>'Something went Wrong!', 'status' => 500];
         }
     }

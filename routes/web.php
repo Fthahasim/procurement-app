@@ -4,6 +4,7 @@ use App\Http\Items\ItemsController;
 use App\Http\Supplier\SupplierController;
 use Illuminate\Support\Facades\Route;
 
+// Route::any('/', [SupplierController::class, 'index'])->name('supplier.index');
 
 // supplier
 Route::prefix('supplier')->group(function () {

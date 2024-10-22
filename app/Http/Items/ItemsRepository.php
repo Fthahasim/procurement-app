@@ -3,13 +3,13 @@
 namespace App\Http\Items;
 
 use App\Http\Controllers\Controller;
-use App\Models\Supplier;
+use App\Models\Item;
 
 class ItemsRepository extends Controller{
 
-    // public function storeSupplier($supplier){
-    //     return Supplier::create($supplier);
-    // }
+    public function storeItem($items){
+        return Item::create($items);
+    }
     // public function getAllSuppliers(){
     //     return Supplier::all(); //paginate(10);
     // }

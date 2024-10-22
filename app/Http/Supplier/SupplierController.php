@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Supplier\SupplierService;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class SupplierController extends Controller{
     protected $service;
@@ -39,7 +40,7 @@ class SupplierController extends Controller{
         try {
             $res = $this->service->updateSuppliers($request);
             return response()->json($res);
-        } catch (\Throwable $th) {      
+        } catch (\Throwable $th) {  
             return ['msg'=>'Something went Wrong!', 'status' => 500];
         }
     }
@@ -48,7 +49,6 @@ class SupplierController extends Controller{
             $res = $this->service->deleteSuppliers($request['id']);
             return response()->json($res);
         } catch (\Throwable $th) {
-            dd($th);
             return ['msg'=>'Something went Wrong!', 'status' => 500];
         }
     }
