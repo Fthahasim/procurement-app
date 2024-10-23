@@ -23,6 +23,6 @@ class Item extends Model{
         'status',
     ];
     public function supplier(){
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(Supplier::class, 'supplier_id', 'supplier_no');
     }
 }

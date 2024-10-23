@@ -18,7 +18,7 @@ class Supplier extends Model{
         'status',
     ];
     public function items(){
-        return $this->hasMany(Item::class,'supplier_no','supplier_no');
+        return $this->hasMany(Item::class, 'supplier_id', 'supplier_no');
     }
     public function purchaseOrders(){
         return $this->hasMany(PurchaseOrder::class,'supplier_no','supplier_id');

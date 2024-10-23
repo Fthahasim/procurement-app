@@ -114,7 +114,7 @@
             <form action="{{Route('supplier.update')}}" id="editSupplierModalForm">
                 @csrf
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><b>Add Supplier</b></h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><b>Edit Supplier</b></h1>
                     <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg bg-proc-primary">
         <div class="container d-flex">
             <a class="navbar-brand" href="#">
-                <!-- <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" width="30" height="24"> -->
+                <img src="{{ asset('/logo/shopping-cart.png') }}" width="60">
             </a>
         </div>
     </nav>
@@ -24,10 +24,10 @@
             <div class="container">
                 <ul class="nav text-center">
                     <li class="nav-item px-3">
-                        <a class="nav-link text-light"  href="{{Route('supplier.index')}}">Supplier</a>
+                        <a class="nav-link text-light"  href="{{ Route('supplier.index') }}">Supplier</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a class="nav-link text-light" href="{{Route('items.index')}}">Items</a>
+                        <a class="nav-link text-light" href="{{ Route('items.index') }}">Items</a>
                     </li>
                     <li class="nav-item px-3">
                         <a class="nav-link text-light" href="{{Route('purchase.order.index')}}">Purchase Order</a>

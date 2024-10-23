@@ -49,7 +49,7 @@ class ItemsService extends Controller{
                     $image = $this->handleImageUpload($photo,$key);
                     $images[] = $image;
                 }
-                $data['item_images'] = json_encode($images,true); 
+                $data['item_images'] = $images; 
             }
             $store = $this->repository->storeItem($data);
             if($store){
@@ -72,52 +72,82 @@ class ItemsService extends Controller{
         $thumbImg->save($thumbPath.$filename);
         return $filename;
     }
-    // public function getAllSuppliers(){
-    //     return $this->repository->getAllSuppliers();
-    // }
-    // public function getSupplierWithId($id){
-    //     return $this->repository->getSupplier($id);
-    // }
-    // public function updateSuppliers($request){
-    //     // dd($request);
-    //     $validator = Validator::make($request->all(),[
-    //         'supplier_no' => 'required',
-    //         'name' => 'required|string',
-    //         'address' => 'required|string',
-    //         'tax_no' => 'required|string',
-    //         'country'=> 'required|string',
-    //         'mobile_no' => 'required|numeric',
-    //         'email' => 'required|email',
-    //         'status'=>'required'
-    //     ]);
+    public function getAllItems(){
+        return $this->repository->getAllItems();
+    }
+    public function getItemsWithId($id){
+        return $this->repository->getItem($id);
+    }
+    public function updateItems($request){
+        
+        $validator = Validator::make($request->all(),[
+            'item_no' =>'required',
+            'name' => 'required|string',
+            'location' => 'required|string',
+            'brand' => 'required|string',
+            'category'=> 'required|string',
+            'stock_unit'=> 'required|string',
+            'price' => 'required|numeric',
+            'supplier_id' => 'required',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'status' => 'required'
+        ]);
 
-    //     if($validator->fails()){
-    //         return ['msg'=>$validator->messages()->first(),'status'=>403];
-    //     }else{
-    //         $data = ['supplier_no'=>$request['supplier_no'],
-    //                     'supplier_name'=>$request['name'],
-    //                     'address'=>$request['name'],
-    //                     'tax_no'=>$request['tax_no'],
-    //                     'country'=>$request['country'],
-    //                     'mobile_no'=>$request['mobile_no'],
-    //                     'email'=>$request['email'],
-    //                     'status'=>$request['status'],
-    //                 ];
-    //         $update = $this->repository->updateSupplier($data);
-    //         if($update){
-    //             return ['msg'=>'Supplier Updated Successfully!','status'=>200];
-    //         }else{
-    //             return ['msg'=>'Something Went wrong!','status'=>400];
-    //         }
-    //     }
-    // }
-    // public function deleteSuppliers($id){
-    //     $status = 'Inactive';
-    //     $delete = $this->repository->deleteSupplier($id,$status);
-    //     if($delete){
-    //         return['msg'=>'Supplier Deleted!','status'=>200];
-    //     }else{
-    //         return ['msg'=>'Something Went wrong!','status'=>400];
-    //     }
-    // }
+        if($validator->fails()){
+            return ['msg'=>$validator->messages()->first(),'status'=>403];
+        }else{
+            // dd($request);
+            $data = ['item_no'=>$request['item_no'],
+                    'item_name'=>$request['name'],
+                    'inventory_location'=>$request['location'],
+                    'brand'=>$request['brand'],
+                    'category'=>$request['category'],
+                    'supplier_id'=>$request['supplier_id'],
+                    'stock_unit'=>$request['stock_unit'],
+                    'unit_price'=>$request['price'],
+                    'status'=>$request['status'],
+                ];
+
+            if($request->hasFile('images'))
+            {
+                $db = $this->repository->getItemImages($data['item_no']);
+                // dd($db);
+                if (!empty($db->item_images)) {
+                    foreach ($db->item_images as $dbImage) {
+                        $imagePath = public_path('items/' . $dbImage);
+                        $thumbPath = public_path('items/thumbnails/' . $dbImage);
+                        if (file_exists($imagePath)) {
+                            unlink($imagePath); 
+                        }
+                        if (file_exists($thumbPath)) {
+                            unlink($thumbPath); 
+                        }
+                    }
+                }
+                foreach ($request->file('images') as $key => $photo) {
+                    $image = $this->handleImageUpload($photo,$key);
+                    $images[] = $image;
+                }
+                $data['item_images'] = $images; 
+            }
+            $update = $this->repository->updateItem($data);
+            if($update){
+                return ['msg'=>'Item Updated Successfully!','status'=>200];
+            }else{
+                return ['msg'=>'Something Went wrong!','status'=>400];
+            }
+        }
+    }
+    public function deleteItems($id){
+        $status = 0;
+        $delete = $this->repository->deleteItems($id,$status);
+        if($delete){
+            return['msg'=>'Supplier Deleted!','status'=>200];
+        }else{
+            return ['msg'=>'Something Went wrong!','status'=>400];
+        }
+    }
+    public function getEnabledItems(){
+        return $this->repository->getEnabledItems();
+    }
 }

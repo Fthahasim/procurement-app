@@ -8,3 +8,4 @@ window.jQuery = $;
 
 import './supplier.js'
 import './items.js'
+import './purchaseOrder.js'
