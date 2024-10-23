@@ -5,7 +5,7 @@
 
 <div class="container my-4 px-4">
     <div class="d-flex align-items-center">
-        <i class="bi bi-1-circle-fill mx-2 fs-4"></i>
+        <!-- <i class="bi bi-1-circle-fill mx-2 fs-4"></i> -->
         <h5 class="mb-0">Add Purchase Order</h5>
     </div>
     <hr class="my-0 mb-2">

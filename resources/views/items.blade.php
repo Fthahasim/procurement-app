@@ -5,6 +5,9 @@
 
 
 <div class="container mt-4">
+    <div class="">
+        <h2>Item Management</h2>
+    </div>
     <div class="items">
         <button type="button" class="btn border" data-bs-toggle="modal" data-bs-target=".addItemsModal">
             Add Items
@@ -124,7 +127,7 @@
                         </tr>
                     @endforeach
                 @else
-                    <tr colspan="11">No Suppliers Found</tr>
+                    <tr colspan="11">No Items Found</tr>
                 @endif
             </tbody>
         </table>

@@ -16,6 +16,12 @@ class PurchaseOrderItem extends Model{
         'net_amount',
     ];
     public function supplier(){
+        return $this->belongsTo(Supplier::class);
+    }
+    public function Item(){
         return $this->belongsTo(Item::class);
+    }
+    public function order(){
+        return $this->belongsTo(PurchaseOrder::class);
     }
 }

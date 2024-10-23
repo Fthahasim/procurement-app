@@ -1,14 +1,19 @@
 <?php
 
+use App\Http\Index\IndexController;
 use App\Http\Items\ItemsController;
 use App\Http\PurchaseOrder\PurchaseOrderController;
 use App\Http\Supplier\SupplierController;
 use Illuminate\Support\Facades\Route;
 
-// Route::any('/', [SupplierController::class, 'index'])->name('supplier.index');
+Route::get('/', function () {
+    return view('login');
+})->name('login.page');
+
+Route::any('/dashboard', [IndexController::class, 'homepage'])->name('procurement.home');
 
 // supplier
-Route::prefix('supplier')->group(function () {
+Route::prefix('/supplier')->group(function () {
     Route::get('/', [SupplierController::class, 'index'])->name('supplier.index');
     Route::any('/add', [SupplierController::class, 'addSupplier'])->name('supplier.add');
     Route::any('/edit', [SupplierController::class, 'getSupplierWithId'])->name('supplier.edit');
@@ -26,10 +31,7 @@ Route::prefix('/items')->group(function () {
 });
 
 // purchase order
-Route::prefix('purchase-order')->group(function () {
+Route::prefix('/purchase-order')->group(function () {
     Route::any('/view', [PurchaseOrderController::class, 'index'])->name('purchase.order.index');
     Route::any('/add', [PurchaseOrderController::class, 'addPurchaseOrder'])->name('purchase.order.add');
-    // Route::any('/edit', [PurchaseOrderController::class, 'getSupplierWithId'])->name('purchase.order.edit');
-    // Route::any('/update', [PurchaseOrderController::class, 'update'])->name('purchase.order.update');
-    // Route::any('/delete', [PurchaseOrderController::class, 'delete'])->name('purchase.order.delete');
 });

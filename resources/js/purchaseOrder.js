@@ -1,6 +1,7 @@
 
 // add items 
-$(".addOrderItems").on('click', function() {
+$(".addOrderItems").on('click', function(e) {
+    e.preventDefault(); 
     addItems($(this));
 });
 
@@ -27,26 +28,26 @@ $(document).ready(function(){
                 type: 'get',
                 data:  {id:itemId},
                 success: function(response){
-                    console.log(response)
                     var itemdetails = $(`<div class="border rounded p-2">
                                             <div class="d-flex">
                                                 <div class="input-group pe-1">
                                                     <span class="input-group-text bg-beige">Item No.</span>
-                                                    <input type="text" class="form-control shadow-none item-no" value="${response.item_no}">
+                                                    <input type="text" class="form-control shadow-none item-no" disabled value="${response.item_no}">
                                                 </div>
                                                 <div class="input-group ps-1">
                                                     <span class="input-group-text bg-beige">Item Name</span>
-                                                    <input type="text" class="form-control shadow-none item-name" value="${response.item_name}">
+                                                    <input type="text" class="form-control shadow-none item-name" disabled  value="${response.item_name}">
                                                 </div>
                                             </div>
                                             <div class="d-flex mt-2">
                                                 <div class="input-group pe-1">
                                                     <span class="input-group-text bg-beige">Stock Unit</span>
-                                                    <input type="text" class="form-control shadow-none stock-unit" name="item_stockUnit" value="${response.stock_unit}">
+                                                    <input type="text" class="form-control shadow-none stock-unit" disabled name="item_stockUnit" value="${response.stock_unit}">
                                                 </div>
                                                 <div class="input-group ps-1">
                                                     <span class="input-group-text bg-beige">Unit Price</span>
-                                                    <input type="text" class="form-control shadow-none unit-price" name="item_unitPrice" value="${response.unit_price}">
+                                                    <input type="text" class="form-control shadow-none unit-price" disabled value="${response.unit_price}">
+                                                    <input type="hidden" name="item_unitPrice" value="${response.unit_price}"> <!-- Hidden field for submission -->
                                                 </div>
                                             </div>
                                         </div>`)

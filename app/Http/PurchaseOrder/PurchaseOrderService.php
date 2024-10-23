@@ -67,4 +67,7 @@ class PurchaseOrderService extends Controller{
             }
         }
     }
+    public function getPurchaseOrder(){
+        return $this->repository->getPurchaseOrder();
+    }
 }

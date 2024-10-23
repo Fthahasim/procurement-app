@@ -14,6 +14,9 @@ class PurchaseOrder extends Model{
         'net_amt',
     ];
     public function supplier(){
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(Supplier::class);
+    }
+    public function order_details(){
+        return $this->hasMany(PurchaseOrderItem::class);
     }
 }

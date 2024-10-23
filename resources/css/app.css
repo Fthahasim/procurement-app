@@ -1,3 +1,11 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* home */
 .bg-proc-primary{
     background-color: #563d7c;
 }
@@ -7,3 +15,60 @@
 .bg-beige{
     background-color: #563d7c17;
 }
+/* sidebar */
+#sidebar::-webkit-scrollbar {
+    display: none;
+}
+#sidebar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+.sidebar{
+    overflow-y: auto;
+}
+.overlay{
+    background-color: rgb(0 0 0 / 45%);
+    z-index: 0;
+}
+.nav-header{
+    height: 4rem;
+}
+/* sidebar for small screens */
+@media (max-width: 767px){
+    .sidebar{
+      width: 50%;
+      max-width: 20rem;
+      transform : translateX(-100%);
+      transition : transform 0.4s ease-out;
+    }
+    .sidebar.active{
+      transform : translateX(0);
+    }
+}
+
+/* login page */
+
+.card-login{
+    width: 1000px;
+    height: 80%;
+    margin: 30px 300px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.card-blue {
+    background: linear-gradient(91.1deg, #563d7c -2.3%, rgb(115, 43, 155) 44.4%, rgb(231, 75, 184) 103.4%);
+}
+.card-form {
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+.card-form button {
+    background: linear-gradient(135deg, rgb(206, 159, 252) 10%, rgb(115, 103, 240) 100%);
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+  

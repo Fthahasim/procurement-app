@@ -4,7 +4,10 @@
 {{-- content --}}
 
 <div class="container mt-4">
-    <div class="supplier">
+    <div class="">
+        <h2>Supplier Management</h2>
+    </div>
+    <div class="supplier mt-2">
         <button type="button" class="btn border" data-bs-toggle="modal" data-bs-target=".addSupplierModal">
             Add Supplier
         </button>

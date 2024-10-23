@@ -68,7 +68,7 @@ class SupplierService extends Controller{
         }else{
             $data = ['supplier_no'=>$request['supplier_no'],
                         'supplier_name'=>$request['name'],
-                        'address'=>$request['name'],
+                        'address'=>$request['address'],
                         'tax_no'=>$request['tax_no'],
                         'country'=>$request['country'],
                         'mobile_no'=>$request['mobile_no'],
