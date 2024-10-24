@@ -11,6 +11,7 @@ Route::get('/', function () {
 })->name('login.page');
 
 Route::any('/dashboard', [IndexController::class, 'homepage'])->name('procurement.home');
+Route::any('/order-export', [IndexController::class, 'exportOrders'])->name('export.order');
 
 // supplier
 Route::prefix('/supplier')->group(function () {

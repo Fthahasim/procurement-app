@@ -20,9 +20,9 @@
 
     
     <div class="card-login d-flex justify-content-center position-absolute align-items-center">
-        <div class="card-blue h-100 d-flex flex-column justify-content-center align-items-center text-center">
+        <div class="card-blue bg-proc-primary text-light h-100 px-5 d-flex flex-column justify-content-center">
             <h1>Welcome To Procureease</h1>
-            <p>Your trusted partner for efficient and seamless procurement managment</p>
+            <p class="text-center fs-6 fw-light">Your trusted partner for efficient and seamless procurement managment</p>
         </div>
         <div class="card-form h-100 w-50  d-flex flex-column justify-content-center">
             <h2 class="text-center">Login</h2>
@@ -30,7 +30,7 @@
             <input type="text" class="form-control shadow-none" id="exampleFormControlInput1" placeholder="Enter username">
             
             <a href="{{Route('procurement.home')}}">
-                <button type="submit" class="mt-4 w-100 p-2 border-0">Login</button>
+                <button type="submit" class="mt-4 w-100 p-2 border-0 text-light">Login</button>
             </a>
         </div>
     </div>

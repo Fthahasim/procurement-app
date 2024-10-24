@@ -57,16 +57,16 @@
       rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     border-radius: 15px;
     overflow: hidden;
-}
-.card-blue {
-    background: linear-gradient(91.1deg, #563d7c -2.3%, rgb(115, 43, 155) 44.4%, rgb(231, 75, 184) 103.4%);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .card-form {
     padding: 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: #f2edf9;
 }
 .card-form button {
-    background: linear-gradient(135deg, rgb(206, 159, 252) 10%, rgb(115, 103, 240) 100%);
+    /* background: linear-gradient(135deg, rgb(206, 159, 252) 10%, rgb(115, 103, 240) 100%); */
+    background-image: linear-gradient(to top, #634d93 0%, #a283d2 100%);
+    
     border-radius: 15px;
     cursor: pointer;
     font-size: 16px;

@@ -13,6 +13,11 @@ class IndexController extends Controller{
     }
     public function homepage(){
         $purchaseOrders = $this->PurchaseOrderService->getPurchaseOrder();
+        // dd($purchaseOrders);
         return view('home',['orders'=>$purchaseOrders]);
+    }
+    public function exportOrders(){
+        $res = $this->PurchaseOrderService->exportOrders();
+        return $res;
     }
 }

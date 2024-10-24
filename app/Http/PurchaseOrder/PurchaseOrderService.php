@@ -2,12 +2,14 @@
 
 namespace App\Http\PurchaseOrder;
 
+use App\Exports\PurchaseOrderExport;
 use App\Http\Controllers\Controller;
 use App\Http\PurchaseOrder\PurchaseOrderRepository;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PurchaseOrderService extends Controller{
 
@@ -69,5 +71,20 @@ class PurchaseOrderService extends Controller{
     }
     public function getPurchaseOrder(){
         return $this->repository->getPurchaseOrder();
+    }
+    public function exportOrders(){
+        $data = $this->getPurchaseOrder();
+        foreach ($data as  $orders) {
+            
+            $orderExport[] = ['order_no'=>$orders['order_no'],
+                            'order_date'=>$orders['order_date'],
+                            'supplier'=>$orders->supplier['supplier_name'],
+                            'item_total'=>$orders['item_total'],
+                            'discount'=>$orders['discount'],
+                            'net_amt'=>$orders['net_amt'],
+                            ];
+        }
+        // dd($orderExport);
+        return Excel::download(new PurchaseOrderExport($orderExport), 'orders.xlsx',\Maatwebsite\Excel\Excel::XLSX);
     }
 }

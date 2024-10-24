@@ -14,6 +14,6 @@ class PurchaseOrderRepository extends Controller{
         return PurchaseOrderItem::create($data);
     }
     public function getPurchaseOrder(){
-        return PurchaseOrder::with('order_details')->get();
+        return PurchaseOrder::with('order_details','supplier')->get();
     }
 }    

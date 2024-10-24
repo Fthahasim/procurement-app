@@ -19,9 +19,10 @@ class PurchaseOrderItem extends Model{
         return $this->belongsTo(Supplier::class);
     }
     public function Item(){
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(Item::class,'item_id','item_no');
     }
     public function order(){
-        return $this->belongsTo(PurchaseOrder::class);
+        // return $this->belongsTo(PurchaseOrder::class);
+        return $this->belongsTo(PurchaseOrder::class, 'purchase_order_id');
     }
 }
